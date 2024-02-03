@@ -1,0 +1,53 @@
+
+1.1.2-a
+[gigl@fedora-gigl TP2_H24]$ echo $PATH
+/home/gigl/.local/bin:/home/gigl/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/opt/pmccabe:/usr/local/cours/inf1900/SimulIDE_0.3.12-SR8-INF1900.3/bin:/usr/local/cours/inf1900/bin:/opt/pmccabe:/usr/local/cours/inf1900/SimulIDE_0.3.12-SR8-INF1900.3/bin:/usr/local/cours/inf1900/bin
+[gigl@fedora-gigl TP2_H24]$ echo $PATH > output1.txt
+
+1.1.2.-b
+[gigl@fedora-gigl TP2_H24]$ which sleep
+/usr/bin/sleep
+[gigl@fedora-gigl TP2_H24]$ which sleep >> output1.txt
+
+1.1.2- c
+[gigl@fedora-gigl TP2_H24]$ cd ..
+[gigl@fedora-gigl TPs]$ cd ..
+[gigl@fedora-gigl INF2610]$ cd ..
+[gigl@fedora-gigl ~]$ cd ..
+[gigl@fedora-gigl home]$ cd ..
+[gigl@fedora-gigl /]$ cd usr
+[gigl@fedora-gigl usr]$ cd bin
+
+- chemin relatif
+[gigl@fedora-gigl bin]$ ./sleep 1
+[gigl@fedora-gigl bin]$
+
+-chemin absolu
+[gigl@fedora-gigl bin]$ cd /
+[gigl@fedora-gigl /]$ /usr/bin/sleep 1
+[gigl@fedora-gigl /]$
+
+-chemin relatif depuis le repertoire courant
+[gigl@fedora-gigl /]$ ls
+afs  boot  etc   lib    lost+found  mnt         opt   root  sbin  sys  usr
+bin  dev   home  lib64  media       mntinstall  proc  run   srv   tmp  var
+[gigl@fedora-gigl /]$ cd home
+[gigl@fedora-gigl home]$ ls
+gigl
+[gigl@fedora-gigl home]$ cd gigl
+[gigl@fedora-gigl ~]$ cd INF2610
+[gigl@fedora-gigl INF2610]$ cd TPs
+[gigl@fedora-gigl TPs]$ cd TP2_H24
+[gigl@fedora-gigl TP2_H24]$ ls
+Makefile     output1.txt  output3.txt  part1.c  TP2_INF2610.pdf
+minisys.asm  output2.txt  output4.txt  part2.c
+[gigl@fedora-gigl TP2_H24]$ pwd
+/home/gigl/INF2610/TPs/TP2_H24
+[gigl@fedora-gigl TP2_H24]$ /../../../usr/bin/sleep 1
+[gigl@fedora-gigl TP2_H24]$ 
+
+1.1.2-d
+[gigl@fedora-gigl TP2_H24]$ /../../../usr/bin/sleep 1000
+^C
+[gigl@fedora-gigl TP2_H24]$ 
+
