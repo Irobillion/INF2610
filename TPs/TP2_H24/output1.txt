@@ -1,53 +1,121 @@
+Q-1.1.1
+
+[gigl@fedora-gigl ~]$ pwd
+/home/gigl
+[gigl@fedora-gigl ~]$ cd ./IroBillions/PolyMtl/INF2610/TPs/TP2_H24
+[gigl@fedora-gigl TP2_H24]$ ls
+Makefile     output1.txt  output3.txt  part1.c  TP2_INF2610.pdf
+minisys.asm  output2.txt  output4.txt  part2.c
+[gigl@fedora-gigl TP2_H24]$ ls | sort
+Makefile
+minisys.asm
+output1.txt
+output2.txt
+output3.txt
+output4.txt
+part1.c
+part2.c
+TP2_INF2610.pdf
+[gigl@fedora-gigl TP2_H24]$ echo "message1"
+message1
+[gigl@fedora-gigl TP2_H24]$ echo "message1" > foo.txt
+[gigl@fedora-gigl TP2_H24]$ echo "message2" >> foo.txt
+[gigl@fedora-gigl TP2_H24]$ cat foo.txt
+message1
+message2
+[gigl@fedora-gigl TP2_H24]$ unlink foo.txt; ls
+Makefile     output1.txt  output3.txt  part1.c  TP2_INF2610.pdf
+minisys.asm  output2.txt  output4.txt  part2.c
+[gigl@fedora-gigl TP2_H24]$ uname
+Linux
+[gigl@fedora-gigl TP2_H24]$ uname -s
+Linux
+[gigl@fedora-gigl TP2_H24]$ uname -r
+6.2.15-100.fc36.x86_64
+[gigl@fedora-gigl TP2_H24]$ uname -o
+GNU/Linux
+[gigl@fedora-gigl TP2_H24]$ uname -m
+x86_64
+[gigl@fedora-gigl TP2_H24]$ 
+
+Q-1.1.2
 
 1.1.2-a
 [gigl@fedora-gigl TP2_H24]$ echo $PATH
 /home/gigl/.local/bin:/home/gigl/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/opt/pmccabe:/usr/local/cours/inf1900/SimulIDE_0.3.12-SR8-INF1900.3/bin:/usr/local/cours/inf1900/bin:/opt/pmccabe:/usr/local/cours/inf1900/SimulIDE_0.3.12-SR8-INF1900.3/bin:/usr/local/cours/inf1900/bin
-[gigl@fedora-gigl TP2_H24]$ echo $PATH > output1.txt
 
-1.1.2.-b
+1.1.2-b
 [gigl@fedora-gigl TP2_H24]$ which sleep
 /usr/bin/sleep
-[gigl@fedora-gigl TP2_H24]$ which sleep >> output1.txt
 
-1.1.2- c
-[gigl@fedora-gigl TP2_H24]$ cd ..
-[gigl@fedora-gigl TPs]$ cd ..
-[gigl@fedora-gigl INF2610]$ cd ..
-[gigl@fedora-gigl ~]$ cd ..
-[gigl@fedora-gigl home]$ cd ..
-[gigl@fedora-gigl /]$ cd usr
-[gigl@fedora-gigl usr]$ cd bin
-
-- chemin relatif
-[gigl@fedora-gigl bin]$ ./sleep 1
-[gigl@fedora-gigl bin]$
-
--chemin absolu
-[gigl@fedora-gigl bin]$ cd /
-[gigl@fedora-gigl /]$ /usr/bin/sleep 1
+1.1.2-c
+[gigl@fedora-gigl TP2_H24]$ cd /
 [gigl@fedora-gigl /]$
-
--chemin relatif depuis le repertoire courant
 [gigl@fedora-gigl /]$ ls
 afs  boot  etc   lib    lost+found  mnt         opt   root  sbin  sys  usr
 bin  dev   home  lib64  media       mntinstall  proc  run   srv   tmp  var
-[gigl@fedora-gigl /]$ cd home
-[gigl@fedora-gigl home]$ ls
-gigl
-[gigl@fedora-gigl home]$ cd gigl
-[gigl@fedora-gigl ~]$ cd INF2610
-[gigl@fedora-gigl INF2610]$ cd TPs
-[gigl@fedora-gigl TPs]$ cd TP2_H24
-[gigl@fedora-gigl TP2_H24]$ ls
-Makefile     output1.txt  output3.txt  part1.c  TP2_INF2610.pdf
-minisys.asm  output2.txt  output4.txt  part2.c
-[gigl@fedora-gigl TP2_H24]$ pwd
-/home/gigl/INF2610/TPs/TP2_H24
-[gigl@fedora-gigl TP2_H24]$ /../../../usr/bin/sleep 1
-[gigl@fedora-gigl TP2_H24]$ 
+
+- chemin relatif au repertoire dans lequel se trouve l'executable sleep
+[gigl@fedora-gigl /]$ cd /usr/bin
+[gigl@fedora-gigl bin]$ ./sleep 1
+
+- chemin absolu
+[gigl@fedora-gigl bin]$ cd /
+[gigl@fedora-gigl /]$ /usr/bin/sleep 1
+
+- chemin relatif au repertoire courant
+[gigl@fedora-gigl /]$ cd /home/gigl/IroBillions/PolyMtl/INF2610/TPs/TP2_H24
+[gigl@fedora-gigl TP2_H24]$ /../../../../../../usr/bin/sleep 1
 
 1.1.2-d
-[gigl@fedora-gigl TP2_H24]$ /../../../usr/bin/sleep 1000
+[gigl@fedora-gigl TP2_H24]$ /../../../../../../usr/bin/sleep 1000
 ^C
 [gigl@fedora-gigl TP2_H24]$ 
+
+Q-1.2
+
+1.2.1
+[gigl@fedora-gigl TP2_H24]$ nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o && ./minisys
+INF2610-TP1 
+[gigl@fedora-gigl TP2_H24]$ 
+[gigl@fedora-gigl TP2_H24]$ make -B minisys
+nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o
+rm -f minisys.o
+[gigl@fedora-gigl TP2_H24]$ 
+
+1.2.2
+[gigl@fedora-gigl TP2_H24]$ nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o && ./minisys
+INF2610-TP1 
+[gigl@fedora-gigl TP2_H24]$ 
+[gigl@fedora-gigl TP2_H24]$ make -B minisys
+nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o
+rm -f minisys.o
+[gigl@fedora-gigl TP2_H24]$ echo $?
+0
+
+1.2.3
+[gigl@fedora-gigl TP2_H24]$ nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o && ./minisys
+INF2610-TP1 
+[gigl@fedora-gigl TP2_H24]$ echo $?
+10
+[gigl@fedora-gigl TP2_H24]$ 
+
+1.2.4 & 1.2.5
+[gigl@fedora-gigl TP2_H24]$ man nanosleep
+[gigl@fedora-gigl TP2_H24]$ nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o && ./minisys
+INF2610-TP1 
+Fin de la pause!
+
+1.2.6
+[gigl@fedora-gigl TP2_H24]$ nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o && ./minisys
+INF2610-TP1 
+Fin de la pause!
+Erreur de segmentation (core dumped)
+[gigl@fedora-gigl TP2_H24]$ nasm -f elf64 minisys.asm && ld -s -o minisys minisys.o && ./minisys
+INF2610-TP1 
+Fin de la pause!
+[gigl@fedora-gigl TP2_H24]$ 
+
+Q-2.1
+
 

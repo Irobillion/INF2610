@@ -24,4 +24,4 @@ handin:
 	rm -rf handin
 
 clean:
-	rm -f handin.tar.gz
+	rm -f handin.tar.gz *.o part1 part2

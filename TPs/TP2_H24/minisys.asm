@@ -32,7 +32,8 @@ SECTION .data
                 dq  0
                 
 ; TODO  ajouter si necessaire d'autres déclarations de variables
-   
+    msg_fin db "Fin de la pause!", 0x0A
+    msg_fin_len equ $-msg_fin 
    
 SECTION .text
 global  _start
@@ -41,7 +42,7 @@ _start:
     ; Convention d'appel systeme Linux x86_64
     ; parametres: rdi, rsi, rdx, r10, r8, r9
     ; numero de l'appel systeme: rax
-    ; valeur de retour: rax
+    ; valeur de retour: rax+
     ;
 
     ;
@@ -59,12 +60,22 @@ _start:
     ; TODO: Pause avec sys_nanosleep suivi de sys_write "Fin de la pause!\n"
     ; prototype: nanosleep(   struct timespec *time1,
     ;                         struct timespec *time2)
+    mov rdi, delay1
+    mov rsi, delay2
+    mov rax, sys_nanosleep
+    syscall
     
-    
+    ; afficher le message de Fin
+    mov rdi, stdout
+    mov rsi, msg_fin
+    mov rdx, msg_fin_len
+    mov rax, sys_write
+    syscall
+
     ;
     ; Terminaison du processus
     ; prototype: _exit(int status)
     ;
-        xor     rdi, rdi      ; remise a zero
+        mov     rdi, 10      ; remise a zero
         mov     rax, sys_exit ; appel systeme dans rax
         syscall               ; interruption logicielle
